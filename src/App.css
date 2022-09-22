@@ -64,3 +64,8 @@ button:hover {
   display: grid;
   place-items: center;
 }
+
+.alt {
+  background-color: cornsilk;
+  color: darkred;
+}

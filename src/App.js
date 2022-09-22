@@ -30,7 +30,10 @@ function Nums(props) {
       <h3>{props.id}</h3>
       <div className="numsSet">
         {numbers.map((num) => (
-          <div className="num" key={num}>
+          <div
+            className={`num ${(props.trigger & 1) === 1 ? "alt" : ""}`}
+            key={num}
+          >
             {num}
           </div>
         ))}
@@ -56,6 +59,9 @@ function App() {
           <Nums key={i} id={i + 1} trigger={count}></Nums>
         ))}
         <Nums id={"Fixed"}></Nums>
+        {numNums.map((e, i) => (
+          <Nums key={i} id={i + 11} trigger={count}></Nums>
+        ))}
       </div>
     </div>
   );
