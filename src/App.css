@@ -1,16 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -24,15 +17,50 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  padding: 10px;
+  font-size: large;
+  font-weight: bold;
+  background-color: orangered;
+  color: white;
+  border-style: solid;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+  color: yellow;
+  scale: 101%
+}
+
+.nums {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  justify-items: center;
+}
+
+/* Does not need to be flex or grid */
+.numsSetContainer {
+  width: 100%;
+  border: 1px solid firebrick;
+}
+
+.numsSet {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 10px;
+  justify-items: center;
+}
+
+.num {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  background-color: beige;
+  color: darkgreen;
+  font-weight: bolder;
+  font-size: larger;
+  display: grid;
+  place-items: center;
 }
