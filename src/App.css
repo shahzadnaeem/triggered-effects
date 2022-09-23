@@ -43,7 +43,7 @@ button:hover {
 }
 
 .num {
-  width: 50px;
+  width: 100%;
   aspect-ratio: 1 / 1;
   border: 1px solid black;
   background-color: beige;
