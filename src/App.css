@@ -6,7 +6,15 @@
   text-align: center;
 }
 
-button {
+#controls {
+  display: flex;
+  flex-flow: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+button, label {
   padding: 10px;
   font-size: large;
   font-weight: bold;
@@ -18,6 +26,12 @@ button {
 button:hover {
   color: yellow;
   scale: 101%
+}
+
+label {
+  background-color: aliceblue;
+  color: black;
+  border: none;
 }
 
 .nums {

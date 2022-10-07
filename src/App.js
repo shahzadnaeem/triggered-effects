@@ -18,26 +18,33 @@ function shuffle(as) {
 }
 
 function Nums(props) {
-  const [numbers, setNumbers] = useState([1, 2, 3, 4, 5, 6]);
+  const initNumbers = Array(6).fill(0).map((v,i) => i+1);
+
+  const [numbers, setNumbers] = useState(initNumbers);
 
   function isFixed() {
-    return props.id === "Fixed"
+    return props.id === "Fixed";
   }
+
   useEffect(() => {
-    if (!isFixed()) {
-      setNumbers([...shuffle(numbers)]);
+    if (props.trigger === 0) {
+      setNumbers(initNumbers);
+    } else {
+      if (!isFixed()) {
+        setNumbers([...shuffle(numbers)]);
+      }  
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.trigger]);
 
   return (
     <div className="numsSetContainer">
-      <h3>Box - {props.id}</h3>
+      <h3>Box - {props.id} ({props.trigger})</h3>
       <div className="numsSet">
         {numbers.map((num) => {
           let classes = "num";
-          if (!isFixed() && (props.trigger & 1)) {
-            classes += " alt"
+          if (!isFixed() && props.trigger & 1) {
+            classes += " alt";
           }
 
           return (
@@ -57,14 +64,22 @@ function App() {
 
   numNums.splice(10, 0, "Fixed");
 
-  function inc() {
-    setCount((n) => n + 1);
+  function inc(by=1) {
+    setCount((n) => n + by);
+  }
+
+  function reset() {
+    setCount(0);
   }
 
   return (
     <div className="App">
       <h1>Effects!</h1>
-      <button onClick={inc}>Shuffle all numbers!</button>
+      <div id="controls">
+        <button onClick={() => inc()}>Shuffle all numbers</button>
+        <label>Shuffle count: {count}</label>
+        <button onClick={reset}>Reset all numbers</button>
+      </div>
       <div className="nums">
         {numNums.map((e, i) => (
           <Nums key={i} id={e !== "Fixed" ? i + 1 : e} trigger={count}></Nums>
